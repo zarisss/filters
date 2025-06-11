@@ -20,5 +20,5 @@ plt.plot(time, gyro_measured.cumsum() * dt, label="Gyro Integrated Angle") #gyro
 plt.plot(time, filtered_angle, label="Filtered Angle")
 plt.legend()
 plt.grid()
-plt.title("Complementary Filter Sensor Fusion (OOP)")
+plt.title("Kalman Filter Sensor Fusion (OOP)")
 plt.show()

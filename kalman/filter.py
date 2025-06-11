@@ -1,7 +1,8 @@
 class KalmanFilter1D:
+
     def __init__(self, Q, R, dt):
-        self.Q = Q          #omega variance
-        self.R = R          #accel_variance
+        self.Q = Q          #angular velocity variance
+        self.R = R          #accel variance
         self.P = 1.0        #error covarience
         self.dt = dt
         self.angle = 0.0
@@ -11,9 +12,10 @@ class KalmanFilter1D:
         self.P = 1.0
 
     def update(self, gyro, accel):
+        #predict step
         self.angle = self.angle + self.dt * gyro
         self.P = self.P + self.Q
-
+        #update step
         K = self.P / (self.P + self.R)
         self.angle = self.angle + K * (accel - self.angle)
         self.P = (1 - K) * self.P
